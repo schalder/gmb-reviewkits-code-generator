@@ -42,61 +42,63 @@
         }
 
         function generateJavaScriptCode(fiveStarsLink, fourStarsLink, threeStarsSection, twoStarsSection, oneStarSection) {
-            return `
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("fivestars").onclick = function () {
-            window.location = "${fiveStarsLink}";
-        };
+            var code = "\
+<script>\n\
+    document.addEventListener('DOMContentLoaded', function () {\n\
+        document.getElementById('fivestars').onclick = function () {\n\
+            window.location = '" + fiveStarsLink + "';\n\
+        };\n\
+\n\
+        document.getElementById('fourstars').onclick = function () {\n\
+            window.location = '" + fourStarsLink + "';\n\
+        };\n\
+\n\
+        var sections = {\n\
+            '" + threeStarsSection + "': 'block',\n\
+            '" + twoStarsSection + "': 'none',\n\
+            '" + oneStarSection + "': 'none'\n\
+        };\n\
+\n\
+        Object.keys(sections).forEach(function (key) {\n\
+            var element = document.getElementById(key);\n\
+            if (element) {\n\
+                element.style.display = sections[key];\n\
+            }\n\
+        });\n\
+\n\
+        function toggleDisplay(elementId) {\n\
+            var element = document.getElementById(elementId);\n\
+            if (element.style.display === 'none') {\n\
+                element.style.display = 'block';\n\
+            } else {\n\
+                element.style.display = 'none';\n\
+            }\n\
+        }\n\
+\n\
+        var threestars = document.getElementById('threestars');\n\
+        if (threestars) {\n\
+            threestars.addEventListener('click', function () {\n\
+                toggleDisplay('" + threeStarsSection + "');\n\
+            });\n\
+        }\n\
+\n\
+        var twostars = document.getElementById('twostars');\n\
+        if (twostars) {\n\
+            twostars.addEventListener('click', function () {\n\
+                toggleDisplay('" + twoStarsSection + "');\n\
+            });\n\
+        }\n\
+\n\
+        var onestar = document.getElementById('onestar');\n\
+        if (onestar) {\n\
+            onestar.addEventListener('click', function () {\n\
+                toggleDisplay('" + oneStarSection + "');\n\
+            });\n\
+        }\n\
+    });\n\
+</script>";
 
-        document.getElementById("fourstars").onclick = function () {
-            window.location = "${fourStarsLink}";
-        };
-
-        var sections = {
-            "${threeStarsSection}": "block",   
-            "${twoStarsSection}": "none",      
-            "${oneStarSection}": "none"        
-        };
-
-        Object.keys(sections).forEach(function (key) {
-            var element = document.getElementById(key);
-            if (element) {
-                element.style.display = sections[key];
-            }
-        });
-
-        function toggleDisplay(elementId) {
-            var element = document.getElementById(elementId);
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-
-        var threestars = document.getElementById("threestars");
-        if (threestars) {
-            threestars.addEventListener("click", function () {
-                toggleDisplay("${threeStarsSection}");
-            });
-        }
-
-        var twostars = document.getElementById("twostars");
-        if (twostars) {
-            twostars.addEventListener("click", function () {
-                toggleDisplay("${twoStarsSection}");
-            });
-        }
-
-        var onestar = document.getElementById("onestar");
-        if (onestar) {
-            onestar.addEventListener("click", function () {
-                toggleDisplay("${oneStarSection}");
-            });
-        }
-    });
-</script>`;
+            return code;
         }
     </script>
 </body>
