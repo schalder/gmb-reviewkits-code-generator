@@ -8,9 +8,28 @@
 <body>
     <h1>Google Review Code Generator</h1>
 
+    <form id="codeGeneratorForm">
+        <label for="fiveStarsLink">5 Star Review Link:</label>
+        <input type="text" id="fiveStarsLink" required><br>
+        <label for="fourStarsLink">4 Star Review Link:</label>
+        <input type="text" id="fourStarsLink" required><br>
+        <label for="threeStarsSection">3 Stars Form Section ID:</label>
+        <input type="text" id="threeStarsSection" required><br>
+        <label for="twoStarsSection">2 Stars Form Section ID:</label>
+        <input type="text" id="twoStarsSection" required><br>
+        <label for="oneStarSection">1 Star Form Section ID:</label>
+        <input type="text" id="oneStarSection" required><br>
+        <button type="button" id="generateButton">Generate Code</button>
+    </form>
+
+    <pre id="generatedCode"></pre>
+
     <script>
+        document.getElementById("generateButton").addEventListener("click", function () {
+            generateCode();
+        });
+
         function generateCode() {
-            console.log("Generate code button clicked"); // Debug statement
             var fiveStarsLink = document.getElementById("fiveStarsLink").value.trim();
             var fourStarsLink = document.getElementById("fourStarsLink").value.trim();
             var threeStarsSection = document.getElementById("threeStarsSection").value.trim();
@@ -80,21 +99,5 @@
 </script>`;
         }
     </script>
-
-    <form id="codeGeneratorForm">
-        <label for="fiveStarsLink">5 Star Review Link:</label>
-        <input type="text" id="fiveStarsLink" required><br>
-        <label for="fourStarsLink">4 Star Review Link:</label>
-        <input type="text" id="fourStarsLink" required><br>
-        <label for="threeStarsSection">3 Stars Form Section ID:</label>
-        <input type="text" id="threeStarsSection" required><br>
-        <label for="twoStarsSection">2 Stars Form Section ID:</label>
-        <input type="text" id="twoStarsSection" required><br>
-        <label for="oneStarSection">1 Star Form Section ID:</label>
-        <input type="text" id="oneStarSection" required><br>
-        <button type="button" onclick="generateCode()">Generate Code</button>
-    </form>
-
-    <pre id="generatedCode"></pre>
 </body>
 </html>
