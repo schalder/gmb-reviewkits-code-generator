@@ -32,68 +32,68 @@
             var oneStarSection = document.getElementById("oneStarSection").value.trim();
 
             var generatedCode = `
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // When the "⭐⭐⭐⭐⭐" radio button is clicked
-        document.getElementById("fivestars").onclick = function () {
-            window.location = "${fiveStarsLink}";
-        };
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // When the "⭐⭐⭐⭐⭐" radio button is clicked
+                    document.getElementById("fivestars").onclick = function () {
+                        window.location = "${fiveStarsLink}";
+                    };
 
-        // When the "⭐⭐⭐⭐☆" radio button is clicked
-        document.getElementById("fourstars").onclick = function () {
-            window.location = "${fourStarsLink}";
-        };
+                    // When the "⭐⭐⭐⭐☆" radio button is clicked
+                    document.getElementById("fourstars").onclick = function () {
+                        window.location = "${fourStarsLink}";
+                    };
 
-        var sections = {
-            "${threeStarsSection}": "block",   // 3 stars form section ID
-            "${twoStarsSection}": "none",      // 2 stars form section ID 
-            "${oneStarSection}": "none"        // 1 star form section ID
-        };
+                    var sections = {
+                        "${threeStarsSection}": "block",   // 3 stars form section ID
+                        "${twoStarsSection}": "none",      // 2 stars form section ID 
+                        "${oneStarSection}": "none"        // 1 star form section ID
+                    };
 
-        // Set the initial display values for the sections
-        Object.keys(sections).forEach(function (key) {
-            var element = document.getElementById(key);
-            if (element) { // Check if the element exists
-                element.style.display = sections[key];
-            }
-        });
+                    // Set the initial display values for the sections
+                    Object.keys(sections).forEach(function (key) {
+                        var element = document.getElementById(key);
+                        if (element) { // Check if the element exists
+                            element.style.display = sections[key];
+                        }
+                    });
 
-        // Function to toggle display of elements
-        function toggleDisplay(elementId) {
-            var element = document.getElementById(elementId);
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
+                    // Function to toggle display of elements
+                    function toggleDisplay(elementId) {
+                        var element = document.getElementById(elementId);
+                        if (element.style.display === "none") {
+                            element.style.display = "block";
+                        } else {
+                            element.style.display = "none";
+                        }
+                    }
 
-        // Event listeners for star rating radio buttons
-        var threestars = document.getElementById("threestars");
-        if (threestars) {
-            threestars.addEventListener("click", function () {
-                toggleDisplay("${threeStarsSection}"); // 3 stars form section ID
-            });
-        }
+                    // Event listeners for star rating radio buttons
+                    var threestars = document.getElementById("threestars");
+                    if (threestars) {
+                        threestars.addEventListener("click", function () {
+                            toggleDisplay("${threeStarsSection}"); // 3 stars form section ID
+                        });
+                    }
 
-        var twostars = document.getElementById("twostars");
-        if (twostars) {
-            twostars.addEventListener("click", function () {
-                toggleDisplay("${twoStarsSection}"); // 2 stars form section ID
-            });
-        }
+                    var twostars = document.getElementById("twostars");
+                    if (twostars) {
+                        twostars.addEventListener("click", function () {
+                            toggleDisplay("${twoStarsSection}"); // 2 stars form section ID
+                        });
+                    }
 
-        var onestar = document.getElementById("onestar");
-        if (onestar) {
-            onestar.addEventListener("click", function () {
-                toggleDisplay("${oneStarSection}"); // 1 star form section ID
-            });
-        }
-    });
-</script>
-`;
+                    var onestar = document.getElementById("onestar");
+                    if (onestar) {
+                        onestar.addEventListener("click", function () {
+                            toggleDisplay("${oneStarSection}"); // 1 star form section ID
+                        });
+                    }
+                });
+            </script>
+            `;
 
-            document.getElementById("generatedCode").innerText = generatedCode;
+            document.getElementById("generatedCode").innerHTML = generatedCode;
         }
     </script>
 </body>
